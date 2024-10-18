@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script> 
+</head>
+<body>
+    <div class="form-container">
+        <h1>Resume Builder</h1>
+
+        <form id="resume-form">
+            <section id="personal-info">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="profile-picture">Profile Picture:</label>
+                    <input type="file" id="profile-picture" name="profile-picture" accept="image/*" required>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <div class="form-group">
+                    <label for="degree">Degree:</label>
+                    <select id="degree" name="degree" required>
+                        <option value="">Select Degree</option>
+                        <option value="BSc">Bachelor of Science (BSc)</option>
+                        <option value="BA">Bachelor of Arts (BA)</option>
+                        <option value="MSc">Master of Science (MSc)</option>
+                        <option value="MA">Master of Arts (MA)</option>
+                        <option value="PhD">Doctor of Philosophy (PhD)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="university">University:</label>
+                    <input type="text" id="university" name="university" placeholder="Enter your university" required>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="form-group">
+                    <label>Select your skills:</label>
+                    <div id="skills-list">
+                        <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+                        <label><input type="checkbox" value="TypeScript"> TypeScript</label>
+                        <label><input type="checkbox" value="HTML"> HTML</label>
+                        <label><input type="checkbox" value="CSS"> CSS</label>
+                    </div>
+                    <p id="skills-error" style="color: red; display: none;">Please select at least one skill.</p>
+                </div>
+            </section>
+
+            <section id="work-experience">
+                <h2>Work Experience</h2>
+                <div class="form-group">
+                    <label for="experience">Experience:</label>
+                    <textarea id="experience" name="experience" placeholder="Enter your work experience" required></textarea>
+                </div>
+            </section>
+
+            <button type="submit">Generate Resume</button>
+        </form>
+
+        <p id="form-message"></p> 
+
+        <!-- Resume Output Section -->
+        <div id="resume-output" style="display:none;">
+            <h2>Your Resume</h2>
+            <img id="profile-img" alt="Profile Picture" style="max-width: 100px; display: block;" />
+            <div id="profile-section">
+                <div>
+                    <strong>Name:</strong> 
+                    <span id="resume-name" style="color: white;"></span>
+                </div>
+                <div>
+                    <strong>Email:</strong> 
+                    <span id="resume-email" style="color: white;"></span>
+                </div>
+                <div>
+                    <strong>Degree:</strong> 
+                    <span id="resume-degree" style="color: white;"></span>
+                </div>
+                <div>
+                    <strong>University:</strong> 
+                    <span id="resume-university" style="color: white;"></span>
+                </div>
+                <div>
+                    <strong>Skills:</strong> 
+                    <span id="resume-skills" style="color: white;"></span>
+                </div>
+                <div>
+                    <strong>Experience:</strong> 
+                    <span id="resume-experience" style="color: white;"></span>
+                </div>
+            </div>
+            <button id="edit-profile-btn">Edit Profile</button>
+        </div>
+    </div>
+</body>
+</html>
