@@ -107,3 +107,60 @@ editProfileBtn.addEventListener('click', () => {
         editProfileBtn.textContent = "Edit Profile";
     }
 });
+
+
+document.getElementById('download-pdf-btn').addEventListener('click', function() {
+    const element = document.getElementById('resume-output');
+    const opt = {
+        margin:       1,
+        filename:     'My_Resume.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    // Generate the PDF and download it
+    html2pdf().from(element).set(opt).save();
+});
+
+// Function to hide buttons before generating the PDF
+function hideButtonsForPDF() {
+    const downloadBtn = document.getElementById('download-pdf-btn');
+    const editBtn = document.getElementById('edit-profile-btn');
+    
+    if (downloadBtn) downloadBtn.style.display = 'none';  
+    if (editBtn) editBtn.style.display = 'none';          
+}
+
+function showButtonsAfterPDF() {
+    const downloadBtn = document.getElementById('download-pdf-btn');
+    const editBtn = document.getElementById('edit-profile-btn');
+    
+    if (downloadBtn) downloadBtn.style.display = 'block';  
+    if (editBtn) editBtn.style.display = 'block';         
+}
+
+// Function to download resume as PDF
+function downloadResumeAsPDF() {
+    const element = document.getElementById('resume-output');
+    hideButtonsForPDF();
+
+    // Generate the PDF
+    const opt = {
+        margin: 1,
+        filename: 'My_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().from(element).set(opt).save().then(() => {
+        showButtonsAfterPDF();
+    }).catch(err => {
+        showButtonsAfterPDF();
+        console.error(err);
+    });
+}
+
+const downloadBtn = document.getElementById('download-pdf-btn');
+downloadBtn.removeEventListener('click', downloadResumeAsPDF);  
+downloadBtn.addEventListener('click', downloadResumeAsPDF);
