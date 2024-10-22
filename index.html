@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Resume Builder</title>
+    <title>Professional CV Builder</title>
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
 </head>
 <body>
     <div class="form-container">
@@ -77,7 +79,7 @@
         <!-- Resume Output Section -->
         <div id="resume-output" style="display:none;">
             <h2>Your Resume</h2>
-            <img id="profile-img" alt="Profile Picture" style="max-width: 100px; display: block;" />
+            <img id="profile-img" alt="Profile Picture" style="max-width: 150px; display: block;" />
             <div id="profile-section">
                 <div>
                     <strong>Name:</strong> 
@@ -104,8 +106,13 @@
                     <span id="resume-experience" style="color: white;"></span>
                 </div>
             </div>
-            <button id="edit-profile-btn">Edit Profile</button>
+
+            <button id="download-pdf-btn" class="no-print">Download PDF</button>
+            <button id="edit-profile-btn" class="no-print">Edit Resume</button>
+
+
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </body>
 </html>
